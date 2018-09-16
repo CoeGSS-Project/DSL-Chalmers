@@ -27,5 +27,8 @@ We have currently implemented the following high-level concepts: viability, reac
 
 The structure of simulations needed for computations related to these concepts is given by the unimplemented elements ("*holes*") in these files.  They are automatically discovered and highlighted by loading the files in an Idris-aware  editor such  as Emacs.   Examples  of implementing viability and reachability are found in the files [SequentialDecisionProblems/ViabilityDefaults.lidr](https://gitlab.pik-potsdam.de/botta/IdrisLibs/tree/master/SequentialDecisionProblems/ViabilityDefaults.lidr) and [SequentialDecisionProblems/ReachabilityDefaults.lidr](https://gitlab.pik-potsdam.de/botta/IdrisLibs/tree/master/SequentialDecisionProblems/ReachabilityDefaults.lidr), respectively.  For example of applications, see the directory [SequentialDecisionProblems/applications](https://gitlab.pik-potsdam.de/botta/IdrisLibs/tree/master/SequentialDecisionProblems/applications).
 
+The bibliographic references are available in [a separate file](CoeGSS.bib).
 
-The bibliographic references are available below.
+## Note
+
+Note that the Idris code in this repository is not complete without the rest of [IdrisLibs](https://gitlab.pik-potsdam.de/botta/IdrisLibs).
