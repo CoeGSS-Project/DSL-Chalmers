@@ -12,9 +12,9 @@ Further development will take place in [another repository](https://gitlab.pik-p
 
 Links:
 
-* [DSLH/README.md](README.md): Main description of DSLH
+* [README.md](DSLH/README.md): Main description of DSLH
 * [CoeGSS.bib](CoeGSS.bib): related publications
-* [DSLH/LICENSE](LICENSE): BSD2, which is one of the licenses compatible with the [European Union Public Licence (EUPL)](https://joinup.ec.europa.eu/collection/eupl/eupl-compatible-open-source-licences)
+* [LICENSE](DSLH/LICENSE): BSD2, which is one of the licenses compatible with the [European Union Public Licence (EUPL)](https://joinup.ec.europa.eu/collection/eupl/eupl-compatible-open-source-licences)
 
 ## DSLD
 
