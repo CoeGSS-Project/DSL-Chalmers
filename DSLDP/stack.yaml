@@ -1,0 +1,85 @@
+# For advanced use and comprehensive documentation of the format, please see:
+# https://docs.haskellstack.org/en/stable/yaml_configuration/
+
+resolver: ghc-7.10.3
+allow-newer: true
+
+# User packages to be built.
+packages:
+- .
+# Dependency packages to be pulled from upstream that are not in the resolver
+# (e.g., acme-missiles-0.3)
+extra-deps:
+- git: https://github.com/solrun/QHaskell.git
+  commit: c91bba44d98e6edec78568adda213e0f1f8caf37
+- generic-deriving-1.12.1
+- hashable-1.2.7.0
+- mtl-2.2.2
+- primitive-0.5.4.0
+- safe-0.3.17
+- semigroups-0.18.4
+- syb-0.7
+- tagged-0.8.5
+- text-1.2.3.0
+- th-desugar-1.8
+- th-expand-syns-0.4.4.0
+- th-lift-0.7.8
+- th-lift-instances-0.1.11
+- th-orphans-0.13.5
+- th-reify-many-0.1.8
+- vector-0.12.0.1
+- unordered-containers-0.2.9.0
+- transformers-0.5.5.0
+- language-c-quote-0.12.2
+- mainland-pretty-0.7
+- exception-mtl-0.4.0.1
+- exception-transformers-0.4.0.6
+- haskell-src-meta-0.8.0.2
+- srcloc-0.5.1.2
+- symbol-0.2.4
+- haskell-src-exts-1.20.2
+- stm-2.4.5.0
+- transformers-compat-0.5.1.4
+- cpphs-1.20.8
+- old-locale-1.0.0.7
+- old-time-1.1.0.3
+- polyparse-1.12
+- aeson-0.11.2.1
+- attoparsec-0.13.2.2
+- base-compat-0.10.5
+- dlist-0.8.0.5
+- fail-4.9.0.0
+- scientific-0.3.6.2
+- th-abstraction-0.2.8.0
+- time-locale-compat-0.1.1.5
+- uuid-types-1.0.3
+- integer-logarithms-1.0.2.2
+- random-1.1
+- aeson-pretty-0.8.7
+- cmdargs-0.10.20
+
+# Override default flag values for local packages and extra-deps
+flags:
+  generic-deriving:
+    base-4-9: false
+
+# Extra package databases containing global packages
+# extra-package-dbs: []
+
+# Control whether we use the GHC we find on the path
+# system-ghc: true
+#
+# Require a specific version of stack, using version ranges
+# require-stack-version: -any # Default
+# require-stack-version: ">=1.6"
+#
+# Override the architecture used by stack, especially useful on Windows
+# arch: i386
+# arch: x86_64
+#
+# Extra directories used by stack for building
+# extra-include-dirs: [/path/to/dir]
+# extra-lib-dirs: [/path/to/dir]
+#
+# Allow a newer minor version of GHC than the snapshot specifies
+# compiler-check: newer-minor
