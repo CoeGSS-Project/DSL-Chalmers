@@ -1055,13 +1055,13 @@ cat << EOF > run_tasks.sh
 #PBS -l walltime=60
 #SBATCH -t 00:01
 
-cp /home/users/palka/dsld_runtime/task.json .
-cp /home/users/palka/dsld_runtime/pop_table.csv .
-cp /home/users/palka/dsld_runtime/edu_table.csv .
+cp /home/users/palka/dslp_runtime/task.json .
+cp /home/users/palka/dslp_runtime/pop_table.csv .
+cp /home/users/palka/dslp_runtime/edu_table.csv .
 
 module load python
 
 for I in {0..4}; do
-  python3 /home/palka/dslp/dslp_runtime.py task_$I.json; done
+  python3 /home/users/palka/dslp_runtime/dslp_runtime.py task_\$I.json; done
 EOF
 
