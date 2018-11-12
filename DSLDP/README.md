@@ -47,4 +47,12 @@ the following files to be present in the current working directory:
 `Ghs06client.tab`, `edu_table.csv` and `pop_table.csv`.
 The files are not part of this distribution, as they contain confidential data.
 
+Finally, we can also create scripts for generating synthetic population through Cloudify.
+The following code will output a script suitable for use with a Cloudify blueprint:
+
+```
+*DSLExamples> dslpSynPop1
+```
+
+The resulting file `gen_tasks.sh` should be uploaded together with a Cloudify blueprint.
 

@@ -1,0 +1,78 @@
+########
+# Copyright (c) 2017 COEGSS - javier.carnero@atos.net
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#        http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+tosca_definitions_version: cloudify_dsl_1_3
+
+imports:
+    # to speed things up, it is possible to download this file,
+    - https://raw.githubusercontent.com/cloudify-cosmo/cloudify-manager/18.1.11/resources/rest-service/cloudify/types/types.yaml
+    # HPC pluging
+    - https://raw.githubusercontent.com/SGo-Go/cloudify-hpc-plugin/master/plugin.yaml
+
+inputs:
+    # Monitor
+    monitor_entrypoint:
+        description: Monitor entrypoint IP
+        default: ""
+        type: string
+
+    # Job prefix name
+    job_prefix:
+        description: Job name prefix in HPCs
+        default: "coegss"
+        type: string
+
+    # First HPC configuration
+    coegss_hlrs_laki:
+        description: Configuration for the primary HPC to be used
+        default: {}
+    
+    # Second HPC configuration
+    coegss_psnc_eagle:
+        description: Configuration for the secondary HPC to be used
+        default: {}
+
+node_templates:
+    first_hpc:
+        type: hpc.nodes.Compute
+        properties:
+            config: { get_input: coegss_psnc_eagle }
+            # external_monitor_entrypoint: { get_input: monitor_entrypoint }
+            job_prefix: { get_input: job_prefix }
+            base_dir: "$HOME"
+            workdir_prefix: "single_sbatch"
+            skip_cleanup: True
+
+    single_job:
+        type: hpc.nodes.job
+        properties:
+            job_options:
+                type: 'SBATCH'
+                command: "run_tasks.sh"
+            deployment:
+                bootstrap: 'scripts/gen_tasks.sh'
+                revert: 'scripts/revert_sbatch_example.sh'
+                inputs:
+                    - 'single'
+                    - { get_input: job_prefix }
+            skip_cleanup: True
+        relationships:
+            - type: job_contained_in_hpc
+              target: first_hpc
+
+outputs:
+    single_job_name:
+        description: single job name in the HPC
+        value: { get_attribute: [single_job, job_name] }

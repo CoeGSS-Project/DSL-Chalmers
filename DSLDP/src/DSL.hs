@@ -298,18 +298,31 @@ data SynPop = SynPop String Value
 
 --pack s = BLC.pack $ map (fromIntegral . ord) s
 
+
 -- Generate scripts for cloudify
 doGenerate :: [SynPop] -> IO ()
 doGenerate l = do
   let pops = zip l [0..]
   withFile "gen_tasks.sh" WriteMode $ \h -> do
+    BLC.hPut h $ BLC.pack $ "#!/bin/bash -l\n"
     forM_ pops $ \(SynPop reg desc, n) -> do
       BLC.hPut h $ BLC.pack $ "cat << EOF > task_" ++  show n ++ ".json\n"
       BLC.hPut h $ encodePretty desc
       BLC.hPut h $ BLC.pack $ "\nEOF\n\n"
 
     BLC.hPut h $ BLC.pack $ "cat << EOF > run_tasks.sh\n"
-    BLC.hPut h $ BLC.pack $ "#!/bin/sh\n"
+    BLC.hPut h $ BLC.pack $ "#!/bin/bash -l\n\n"
+    BLC.hPut h $ BLC.pack $ "#SBATCH -p fast\n"
+    BLC.hPut h $ BLC.pack $ "#PBS -l nodes=1:ppn=1\n"
+    BLC.hPut h $ BLC.pack $ "#SBATCH -N 1\n"
+    BLC.hPut h $ BLC.pack $ "#SBATCH -n 1\n"
+    BLC.hPut h $ BLC.pack $ "#SBATCH --ntasks-per-node=1\n"
+    BLC.hPut h $ BLC.pack $ "#PBS -l walltime=60\n"
+    BLC.hPut h $ BLC.pack $ "#SBATCH -t 00:01\n\n"
+    BLC.hPut h $ BLC.pack $ "cp /home/users/palka/dsld_runtime/task.json .\n"
+    BLC.hPut h $ BLC.pack $ "cp /home/users/palka/dsld_runtime/pop_table.csv .\n"
+    BLC.hPut h $ BLC.pack $ "cp /home/users/palka/dsld_runtime/edu_table.csv .\n\n"
+    BLC.hPut h $ BLC.pack $ "module load python\n\n"
     BLC.hPut h $ BLC.pack $ "for I in {0.." ++ show (length pops - 1) ++ "}; do\n"
     BLC.hPut h $ BLC.pack $ "  python3 /home/palka/dslp/dslp_runtime.py task_$I.json; done\n"
     BLC.hPut h $ BLC.pack $ "EOF\n\n"
