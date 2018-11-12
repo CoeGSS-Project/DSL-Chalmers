@@ -18,4 +18,22 @@ Links:
 
 ## DSLD
 
+DSLD = DSL for describing the data format and formulating properties about data sets.
+
+This directory is an officially released snapshot of the development at the end of the CoeGSS project (November 2018).
+
+Links:
+
+* [README.md](DSLDP/README.md): Main description of DSLD and DSLP
+* [LICENSE](DSLDP/LICENSE): GPL-3, due to one of the components being GPL-3 licensed.
+
 ## DSLP
+
+DSLP = DSL for describing synthetic population generation procedures (builds on top od DSLD).
+
+This directory is an officially released snapshot of the development at the end of the CoeGSS project (November 2018).
+
+Links:
+
+* [README.md](DSLDP/README.md): Main description of DSLD and DSLP.
+* [LICENSE](DSLDP/LICENSE): GPL-3, due to one of the components being GPL-3 licensed.

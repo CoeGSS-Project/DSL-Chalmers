@@ -1,5 +1,36 @@
 # DSLD and DSLP implementation
 
+This file describes the shared implementation of DSLD and DSLP.
+
+## DSLD
+
+*DSLD* is the DSL for defining the structure of data and specifying properties about data sets.  DSLD is part of the DSLs implemented in Task 3.4 (*Domain-specific languages for generating application-specific synthetic populations for GSS simulations*).
+
+It is presented in the Deliverable 3.4 as follows:
+
+> **DSL structure**:
+
+> The DSL has the following structure:
+> - Front-end The user specifies the characteristics and their types (possible values) and relations between them (e.g., if age is < 10 years old, then education level is not University)
+> - Back-end The result is a generated C code for preparing and testing the data
+
+
+## DSLP
+
+
+*DSLP* builds on top of DSLD and is the DSL for defining synthetic population generation procedures.  DSLP is part of the DSLs implemented in Task 3.4 (*Domain-specific languages for generating application-specific synthetic populations for GSS simulations*).
+
+It is presented in the Deliverable 3.4 as follows:
+
+> **DSL structure**:
+
+> - Front-end The user specifies the input data description using DSLD, and the procedure for generating the synthetic population using a set of primitive operations, like IPF or sampling
+> - Back-end The result is a generation procedure implemented in C
+
+
+## Running instructions
+
+
 Build with stack:
 ```
 stack build
