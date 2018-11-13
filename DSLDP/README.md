@@ -54,7 +54,7 @@ $ clang -lcsv -o property_checker property_checker.c
 Running the program with example data:
 
 ```
-$ ./property_checker ../test.csv
+$ ./property_checker data/test.csv
 ```
 Should yield the following result:
 ```
@@ -86,4 +86,3 @@ The following code will output a script suitable for use with a Cloudify bluepri
 ```
 
 The resulting file `gen_tasks.sh` should be uploaded together with a Cloudify blueprint.
-

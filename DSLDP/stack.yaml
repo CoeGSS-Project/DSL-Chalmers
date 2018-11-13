@@ -57,6 +57,8 @@ extra-deps:
 - random-1.1
 - aeson-pretty-0.8.7
 - cmdargs-0.10.20
+- alex-3.2.4@sha256:fcf1971fb513eab886072d1f705475f04fb65261a4d81361bede9d86056b474b
+- happy-1.19.9@sha256:f8c774230735a390c287b2980cfcd2703d24d8dde85a01ea721b7b4b4c82944f
 
 # Override default flag values for local packages and extra-deps
 flags:

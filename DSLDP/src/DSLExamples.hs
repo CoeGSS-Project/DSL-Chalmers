@@ -55,6 +55,8 @@ prop1Expr = toTExp eduMapQ prop1
 
 dsldGenProp1 = genProp "property_checker.c" [("col1", prop1Expr)]
 
+main :: IO ()
+main = dsldGenProp1
 
 -- DSLP definitions
 
@@ -106,6 +108,3 @@ dslpSynPop1 = doGenerate synPop1
 -- suitable for local execution
 dslpSynPop1Local :: IO ()
 dslpSynPop1Local = doGenerateSimple synPop1
-
-
-
